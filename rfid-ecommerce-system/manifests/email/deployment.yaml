@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-deployment
+  labels:
+    app: email
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email
+  template:
+    metadata:
+      labels:
+        app: email
+    spec:
+      containers:
+      - name: email
+        image: mangesh22898/email-service:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
